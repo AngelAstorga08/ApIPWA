@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
+    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 var connectionString = builder.Configuration.GetConnectionString("Products");
 var databaseUrl = builder.Configuration["DATABASE_URL"] ?? connectionString;
 if (databaseUrl?.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase) == true ||
@@ -43,6 +45,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseCors();
 app.MapControllers();
 
 app.Run();
