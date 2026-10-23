@@ -17,7 +17,7 @@ if (databaseUrl?.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase)
     connectionString = new NpgsqlConnectionStringBuilder
     {
         Host = uri.Host,
-        Port = uri.Port,
+        Port = uri.IsDefaultPort ? 5432 : uri.Port,
         Database = uri.AbsolutePath.TrimStart('/'),
         Username = Uri.UnescapeDataString(credentials[0]),
         Password = Uri.UnescapeDataString(credentials[1]),
