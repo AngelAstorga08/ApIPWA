@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: products
+      POSTGRES_USER: products
+      POSTGRES_PASSWORD: products
+    ports:
+      - "5432:5432"
+    volumes:
+      - products_data:/var/lib/postgresql/data
+
+volumes:
+  products_data:

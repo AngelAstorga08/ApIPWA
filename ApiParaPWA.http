@@ -1,0 +1,28 @@
+@ApiParaPWA_HostAddress = http://localhost:5028
+
+GET {{ApiParaPWA_HostAddress}}/api/products
+Accept: application/json
+
+###
+
+GET {{ApiParaPWA_HostAddress}}/api/products/1
+
+###
+
+POST {{ApiParaPWA_HostAddress}}/api/products
+Content-Type: application/json
+
+{"name":"Regla","description":"Regla de 30 cm","price":18.50,"stock":15}
+
+###
+
+PUT {{ApiParaPWA_HostAddress}}/api/products/1
+Content-Type: application/json
+
+{"name":"Cuaderno grande","description":"Cuaderno de 100 hojas","price":49.00,"stock":18}
+
+###
+
+DELETE {{ApiParaPWA_HostAddress}}/api/products/1
+
+###
